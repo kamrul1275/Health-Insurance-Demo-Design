@@ -59,13 +59,38 @@ formData.append(
       OrgNo: event.target.OrgNo.value,
       OrgMemNo: event.target.OrgMemNo.value,
       EnrollId: event.target.EnrollId.value,
-      // ... other fields ...
+      ErpMemId: event.target.ErpMemId.value,
+          ProjectCode: event.target.ProjectCode.value,
+
+          // Form fields
+          AnyDisese: event.target.AnyDisese.value,
+          PolicyName: event.target.PolicyName.value,
+          InsuranceType: event.target.InsuranceType.value,
+          Category: event.target.Category.value,
+          PremiumAmount: event.target.PremiumAmount.value,
+          policy_tenure: event.target.policy_tenure.value,
+
+          Phone: event.target.Phone.value,
+          NomineeName: event.target.NomineeName.value,
+          NomineePhone: event.target.NomineePhone.value,
+          NomineeDOB: event.target.NomineeDOB.value,
+          NomineeIDType: event.target.NomineeIDType.value,
+          NomineeIDIssueDate: event.target.NomineeIDIssueDate.value,
+          NomineeIDExpiryDate: event.target.NomineeIDExpiryDate.value,
+          NomineeIDPlaceOfIssue: event.target.NomineeIDPlaceOfIssue.value,
+          NomineeIDNumber: event.target.NomineeIDNumber.value,
+          NomineeRelation: event.target.NomineeRelation.value,
+
     },
   ])
 );
+
+console.log('test1 form data',event.target.PremiumAmount.value);
+console.log('test12 form data',event.target.policy_tenure.value);
+
+
 formData.append("nomineeImageFront", event.target.nomineeImageFront.files[0]);
 formData.append("nomineeImageBack", event.target.nomineeImageBack.files[0]);
-
 
 axios
   .post("http://localhost:3000/api/health_insurance/store", formData, {
@@ -77,6 +102,8 @@ axios
     if (response.status === 201) {
       alert("Successfully Created");
     }
+
+console.log('inserttt data',response.data);
   })
   .catch((error) => {
     console.error("Error creating data:", error.message);
